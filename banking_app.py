@@ -8,6 +8,13 @@ def generate_password():
     password = ''.join(random.choice(characters) for _ in range(12))
     return password
 
+def main():
+    password = generate_password()
+    print("Generated Password:", password)
+
+if __name__ == "__main__":
+    main()
+
 # Function to handle deposits
 def deposit(balance):
     try:
@@ -15,7 +22,7 @@ def deposit(balance):
         if amount <= 0:
             raise ValueError("Deposit amount must be positive")
         balance += amount
-        print(f"Deposit of ${amount} successful.")
+        print(f"Deposit of R{amount} successful.")
     except ValueError as e:
         print("Invalid input. Please enter a valid amount.")
     return balance
@@ -29,7 +36,7 @@ def withdraw(balance):
         if amount > balance:
             raise ValueError("Insufficient funds")
         balance -= amount
-        print(f"Withdrawal of ${amount} successful.")
+        print(f"Withdrawal of R{amount} successful.")
     except ValueError as e:
         print("Invalid input. Please enter a valid amount.")
     return balance
@@ -56,7 +63,7 @@ def main():
     
     # Interaction loop
     while True:
-        print(f"Current balance: ${balance}")
+        print(f"Current balance: R{balance}")
         transaction = input("Would you like to make a transaction? (Yes/No) ").lower()
         if transaction != "yes":
             break
@@ -73,7 +80,7 @@ def main():
         
         update_bank_data(balance)
     
-    print(f"Final balance: ${balance}")
+    print(f"Final balance: R{balance}")
 
 if __name__ == "__main__":
     main()
